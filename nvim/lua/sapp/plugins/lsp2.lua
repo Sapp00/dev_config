@@ -21,6 +21,7 @@ return {
           "json-lsp",
           "lua_ls",
           "ltex",
+          "gopls",
           "markdown_oxide",
           "openscad_lsp",
           "pylsp",

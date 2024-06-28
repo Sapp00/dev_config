@@ -18,6 +18,7 @@ return
                 "scss",
                 "svelte",
                 "go",
+                "markdown",
                 "lua",
                 "rust",
                 "jsdoc",
