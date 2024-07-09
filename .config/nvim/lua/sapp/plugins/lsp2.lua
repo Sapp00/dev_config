@@ -12,7 +12,7 @@ return {
     config = function()
         local servers = {
           "bashls",
-          --"clangd", -- use local one due to compatibility issues
+          "clangd",
           "cssls",
           "dockerls",
           "docker_compose_language_service",
@@ -25,6 +25,7 @@ return {
           "markdown_oxide",
           "openscad_lsp",
           "pylsp",
+          --"rust_analyzer",
 				  "svelte",
 				  "tailwindcss",
   				"terraformls",
@@ -74,9 +75,6 @@ return {
           ["rust_analyzer"] = function() end,
         }
       })
-    -- setup for LSPs that are not installed by mason
-    require("lspconfig").clangd.setup({})
-    require("lspconfig").gopls.setup({})
     end
 	},
   -- Setup DAPs
