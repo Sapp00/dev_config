@@ -35,6 +35,10 @@ elif [[ $arch == aarch64 ]]; then
 	cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
 fi
 
+# install tpm for tmux
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
