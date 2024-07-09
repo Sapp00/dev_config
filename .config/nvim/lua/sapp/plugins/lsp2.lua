@@ -12,13 +12,13 @@ return {
     config = function()
         local servers = {
           "bashls",
-          "clangd",
+          --"clangd",
           "cssls",
           "dockerls",
           "docker_compose_language_service",
           "eslint",
           "html",
-          "json-lsp",
+          "jsonls",
           "lua_ls",
           "ltex",
           "gopls",
@@ -73,6 +73,9 @@ return {
           end,
           -- for rust, do nothing since we configure it in rust-tools/rustace
           ["rust_analyzer"] = function() end,
+          ["clangd"] = function()
+            require("lspconfig").clangd.setup({})
+          end,
         }
       })
     end

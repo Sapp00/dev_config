@@ -39,11 +39,14 @@ fi
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
 # go back to root directory
 cd "$proot"
+
+# configure tmux
+cp .tmux.conf ~/.tmux.conf
+
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 mkdir -p ~/.config
 cp -r .config/* ~/.config/
