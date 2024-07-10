@@ -73,3 +73,5 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+-- enable shared clipboard
+vim.opt.clipboard = "unnamedplus"
