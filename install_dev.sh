@@ -12,7 +12,7 @@ if [[ $arch == x86_64* || $arch == aarch64 ]]; then
 # osx
 elif [[ $arch == arm64 ]]; then
 	brew install -y python3 go
-	brew install -y tmux fzf npm llvm
+	brew install -y tmux fzf npm llvm lazygit
 	pip3 install virtualenv
 
 	brew install -y neovim libreadline-dev
@@ -21,10 +21,18 @@ fi
 # installation of neovim
 # ubuntu
 if [[ $arch == x86_64* ]]; then
-	sudo apt install -y software-properties-common
+	# nvim
+ 	sudo apt install -y software-properties-common
 	sudo add-apt-repository ppa:neovim-ppa/stable
 	sudo apt update
 	sudo apt install -y neovim
+	
+ 	# lazygit
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
+ 
 # linux arm 
 elif [[ $arch == aarch64 ]]; then
 	# we install neovim from public repo
@@ -33,6 +41,12 @@ elif [[ $arch == aarch64 ]]; then
 	git clone https://github.com/neovim/neovim
 	cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 	cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
+
+  	# lazygit
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_arm64.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
 fi
 
 # install tpm for tmux
